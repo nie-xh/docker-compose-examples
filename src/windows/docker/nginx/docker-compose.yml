@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:stable-alpine-perl
+    container_name: nginx
+    hostname: "nginx"
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 80:80
+    volumes:
+      - //e/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - //e/docker/nginx/conf/conf.d:/etc/nginx/conf.d
+      - //e/docker/nginx/logs:/var/log/nginx
+    privileged: true
+    restart: always

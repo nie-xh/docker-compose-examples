@@ -1,0 +1,24 @@
+version: '3'
+services:
+  mysql8:
+    image: mysql:8.0
+    container_name: mysql8
+    restart: always
+    volumes:
+      #windows下my.cnf需要设置为只读权限，否则不生效
+      - //e/docker/mysql/conf:/etc/mysql/conf.d
+      - //e/docker/mysql/data:/var/lib/mysql
+      - //e/docker/mysql/log:/var/log/mysql
+      #默认执行nacos初始化的sql
+      - //e/docker/mysql/init:/docker-entrypoint-initdb.d
+    entrypoint: bash -c "chown -R mysql:mysql /var/log/mysql && exec /entrypoint.sh mysqld"
+    privileged: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+      MYSQL_DATABASE: nacos_config
+      # 初始化用户(不能是root 会报错, 后续需要给新用户赋予权限)
+      MYSQL_USER: nacos
+      # 用户密码
+      MYSQL_PASSWORD: nacos

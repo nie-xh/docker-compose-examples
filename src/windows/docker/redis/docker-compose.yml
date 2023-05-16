@@ -1,0 +1,16 @@
+version: '3'
+services:
+  reids:
+    image: redis:5.0.8-alpine
+    container_name: redis
+    hostname: "redis"
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+    - 6379:6379
+    volumes:
+    - //e/docker/redis/data:/data
+    - //e/docker/redis/conf:/etc/redis
+    command: "redis-server /etc/redis/redis.conf --appendonly yes"
+    privileged: true
+    restart: always
