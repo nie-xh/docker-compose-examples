@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgresql:
+    image: postgis/postgis:14-master
+    container_name: postgresql
+    environment:
+      - TZ=Asia/Shanghai
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
+    volumes:
+      - /docker/postgresql/data:/var/lib/postgresql/data
+    privileged: true
+    restart: always
