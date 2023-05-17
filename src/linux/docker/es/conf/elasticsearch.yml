@@ -1,0 +1,7 @@
+# 集群名称
+cluster.name: es-cluster
+# 网络绑定
+network.host: 0.0.0.0
+# 支持跨域访问
+http.cors.enabled: true
+http.cors.allow-origin: "*"

@@ -1,0 +1,31 @@
+version: "3"
+services:
+  es:
+    container_name: es
+    hostname: es
+    image: elasticsearch:7.1.1
+    restart: always
+    privileged: true
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - /docker/es/plugins:/usr/share/elasticsearch/plugins
+      - /docker/es/conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /docker/es/data:/usr/share/elasticsearch/data
+      - /docker/es/logs:/usr/share/elasticsearch/logs
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #解决日志挂载报错
+      - TAKE_FILE_OWNERSHIP=true
+      - discovery.type=single-node
+
+  es-head:
+    container_name: es-head
+    image: mobz/elasticsearch-head:5
+    restart: always
+    privileged: true
+    ports:
+      - 9100:9100
+    depends_on:
+      - es

@@ -3,6 +3,11 @@
 ## 简介
 提供linux和windows下docker-compose组件部署样例，帮助快速搭建开发环境。
 
+## 使用
+根据要部署的环境，分别拷贝linux和windows下的docker文件夹到安装目录，linux拷贝至根目录/下，windows拷贝至e盘下。
+然后进入对应的组件文件夹，执行docker-compose up -d构建容器。
+
+
 ## 目录结构说明
 ```
 source
