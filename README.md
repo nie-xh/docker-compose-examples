@@ -5,20 +5,19 @@
 data、conf、logs等该挂载的目录都默认挂载了，亲自做过测试，基本上可以一键构建，不需要修改docker-compose文件，个性化的配置可以在conf中修改
 
 ## 使用
-根据要部署的环境，分别拷贝linux和windows下的docker文件夹到安装目录，linux拷贝至根目录/下，windows拷贝至e盘下。
-然后进入对应的组件文件夹，执行docker-compose up -d构建容器。
+根据要部署的环境，分别拷贝linux和windows下的docker文件夹到安装目录，然后进入对应的组件文件夹，执行docker-compose up -d构建容器。
 
 
 ## 目录结构说明
 ```
 source
     -linux -- linux环境下部署样例
-        -docker -- docker目录，部署时将该目录整体拷贝到linux下的根目录/
+        -docker -- docker目录，部署时将该目录整体拷贝到linux下要部署的目录
             -组件 -- 组件目录
                 -conf   --配置文件
                 -docker-compose.yml 
     -windows -- windows环境下部署样例
-        -docker -- docker目录，部署时将该目录整体拷贝到windows下的e盘
+        -docker -- docker目录，部署时将该目录整体拷贝到windows下要部署的目录
             -与linux下结构相同
 ```
 windows下使用docker-compose强烈推荐docker desktop，可以很方便的一键管理自己的windows下的docker容器。成功安装并启动docker desktop后，在windows的powershell中即可使用docker相关命令。

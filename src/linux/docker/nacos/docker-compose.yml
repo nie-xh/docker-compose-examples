@@ -8,8 +8,8 @@ services:
       - MODE=standalone
       - TZ=Asia/Shanghai
     volumes:
-      - /docker/nacos/standalone-logs/:/home/nacos/logs
-      - /docker/nacos/conf/application.properties:/home/nacos/conf/application.properties
+      - ./standalone-logs/:/home/nacos/logs
+      - ./conf/application.properties:/home/nacos/conf/application.properties
     ports:
       - 8848:8848
       - 9848:9848

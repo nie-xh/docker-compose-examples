@@ -10,10 +10,10 @@ services:
       - 9200:9200
       - 9300:9300
     volumes:
-      - //e/docker/es/plugins:/usr/share/elasticsearch/plugins
-      - //e/docker/es/conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - //e/docker/es/data:/usr/share/elasticsearch/data
-      - //e/docker/es/logs:/usr/share/elasticsearch/logs
+      - ./plugins:/usr/share/elasticsearch/plugins
+      - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data:/usr/share/elasticsearch/data
+      - ./logs:/usr/share/elasticsearch/logs
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       #解决日志挂载报错

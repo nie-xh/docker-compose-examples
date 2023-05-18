@@ -5,11 +5,11 @@ services:
     container_name: mysql8
     restart: always
     volumes:
-      - //e/docker/mysql/conf/my.cnf:/etc/mysql/conf.d/my.cnf
-      - //e/docker/mysql/data:/var/lib/mysql
-      - //e/docker/mysql/log:/var/log/mysql
+      - ./conf/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./data:/var/lib/mysql
+      - ./log:/var/log/mysql
       #默认执行nacos初始化的sql
-      - //e/docker/mysql/init:/docker-entrypoint-initdb.d
+      - ./init:/docker-entrypoint-initdb.d
     entrypoint: bash -c "chown -R mysql:mysql /var/log/mysql && chmod 644 /etc/mysql/conf.d/my.cnf && exec /entrypoint.sh mysqld"
     privileged: true
     ports:
