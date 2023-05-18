@@ -2,6 +2,7 @@
 
 ## 简介
 提供linux和windows下docker-compose组件部署样例，帮助快速搭建开发环境。
+data、conf、logs等该挂载的目录都默认挂载了，亲自做过测试，基本上可以一键构建，不需要修改docker-compose文件，个性化的配置可以在conf中修改
 
 ## 使用
 根据要部署的环境，分别拷贝linux和windows下的docker文件夹到安装目录，linux拷贝至根目录/下，windows拷贝至e盘下。
@@ -31,3 +32,19 @@ windows下使用docker-compose强烈推荐docker desktop，可以很方便的一
 ## 注意
 1. windows下部署mysql时需将conf/my.cnf设置为只读，否则my.cnf配置不会生效。
 2. 每个组件对应的配置文件请在构建前按自己实际情况修改，192.168.0.154为我本机ip，请修改成自己机器ip
+
+
+
+## Q&A
+1. es构建如果报错max virtual memory areas vm.max\_map\_count \[65530\] is too low, increase to at least \[262144\]（elasticsearch用户拥有的内存权限太小，至少需要262144）
+
+    解决：
+    ~~~shell
+    # 修改配置sysctl.conf
+    [root@localhost ~]# vi /etc/sysctl.conf
+    # 添加下面配置：
+    vm.max_map_count=262144
+    # 重新加载：
+    [root@localhost ~]# sysctl -p
+    # 最后重新启动elasticsearch，即可启动成功。
+    ~~~
