@@ -3,6 +3,8 @@ services:
   nacos:
     image: nacos/nacos-server:v2.1.2
     container_name: nacos
+    restart: always
+    privileged: true
     hostname: "nacos-standalone"
     environment:
       - MODE=standalone

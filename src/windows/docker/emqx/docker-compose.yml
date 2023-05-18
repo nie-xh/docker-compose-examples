@@ -3,6 +3,8 @@ services:
   emqx:
     image: emqx:5.0.24
     container_name: emqx
+    restart: always
+    privileged: true
     ports:
       - 1883:1883
 #      - 8083:8083

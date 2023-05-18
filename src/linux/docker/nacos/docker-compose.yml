@@ -4,6 +4,8 @@ services:
     image: nacos/nacos-server:v2.1.2
     container_name: nacos
     hostname: "nacos-standalone"
+    restart: always
+    privileged: true
     environment:
       - MODE=standalone
       - TZ=Asia/Shanghai
