@@ -9,8 +9,8 @@ services:
     ports:
     - 6379:6379
     volumes:
-    - ./redis/data:/data
-    - ./redis/conf:/etc/redis
+    - ./data:/data
+    - ./conf:/etc/redis
     command: "redis-server /etc/redis/redis.conf --appendonly yes"
     privileged: true
     restart: always
